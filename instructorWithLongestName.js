@@ -1,11 +1,15 @@
 const instructorWithLongestName = function (instructors) {
-  let longestName = { name: "", course: "" };
+  let longestName = "";
   for (let i = 0; i < instructors.length; i++) {
-    if (instructors[i].name >= longestName.name) {
-      longestName = instructors[i];
+    if (instructors[i].name.length >= longestName.length) {
+      longestName = instructors[i].name;
     }
   }
-  console.log(longestName);
+  for (let j = 0; j < instructors.length; j++) {
+    if (instructors[j].name === longestName) {
+      return instructors[j];
+    }
+  }
 };
 
 console.log(
