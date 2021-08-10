@@ -1,20 +1,14 @@
 const judgeVegetable = function (vegetables, metric) {
-  let selected = 0;
-  let submitterName = "";
+  let x = 0;
+  let selectedSubmitter;
+
   for (let i = 0; i < vegetables.length; i++) {
-    if (metric === "redness") {
-      if (vegetables[i].redness > selected) {
-        selected = vegetables[i].redness;
-        submitterName = vegetables[i].submitter;
-      }
-    } else if (metric === "plumpness") {
-      if (vegetables[i].plumpness > selected) {
-        selected = vegetables[i].plumpness;
-        submitterName = vegetables[i].submitter;
-      }
+    if (vegetables[i][metric] > x) {
+      x = vegetables[i][metric];
+      selectedSubmitter = vegetables[i].submitter;
     }
   }
-  return submitterName;
+  return selectedSubmitter;
 };
 
 const vegetables = [
@@ -33,8 +27,20 @@ const vegetables = [
     redness: 4,
     plumpness: 3,
   },
+  {
+    submitter: "A",
+    d: 5,
+  },
+  {
+    submitter: "B",
+    d: 10,
+  },
+  {
+    submitter: "C",
+    d: 25,
+  },
 ];
 
-const metric = "redness";
+const metric = "d";
 
-console.log(judgeVegetable(vegetables, metric));
+console.log('"' + judgeVegetable(vegetables, metric) + '"');
